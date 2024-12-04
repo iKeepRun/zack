@@ -1,18 +1,23 @@
-import "./styles/app.css"
-import {  useEffect, useRef } from "react";
-function App() {
-  const ref=useRef<HTMLDivElement>(null!);
-  useEffect(()=>{
-    ref.current.style.opacity="1";
-  },[])
-  return (
+import "normalize.css";
+import "./styles/border.css";
+import "./styles/base.css";
 
-    <div ref={ref} className="page guide-page">
-       <img alt="欢乐购" className="main-pic" src ={require('./img/logo_@2x.png')} />
-       <p className="title">欢乐购</p>
-       <img alt="欢乐购" className="sub-pic" src ={require('./img/slogn_word_icon_@2x.png')} />
-       <div className="iconfont arrow-icon">&#xe60c;</div>
-    </div>
+import {BrowserRouter,Routes,Route} from  "react-router-dom";
+
+import Guide from "./containers/Guide";
+import Login from "./containers/Login";
+
+
+function App() {
+ 
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Guide />}/>
+        <Route path="/login" element={<Login />}/>
+      </Routes>
+    </BrowserRouter>
+  
   );
 }
 

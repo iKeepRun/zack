@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import "./styles/border.css";
-import "normalize.css";
-import "./styles/base.css"
+
 
 document.documentElement.style.fontSize=document.documentElement.clientWidth/375*100+"px";
 window.addEventListener('resize',()=>{

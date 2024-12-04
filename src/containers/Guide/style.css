@@ -1,0 +1,42 @@
+.guide-page {
+    transition: all 1.5s;
+    opacity: 0;
+}
+
+.guide-page .main-pic {
+     display: block;
+     width: .7rem;
+     height: .86rem;
+     padding:.93rem 0 .29rem 0; 
+     margin: 0 auto;
+     /* margin:.93rem auto .29rem auto; */
+}
+
+.guide-page .title {
+    font-size: .2rem;
+    line-height:.23rem ;
+    color: #242424;
+    font-weight: regular;
+    text-align: center;
+    letter-spacing: 0px;
+}
+
+.guide-page .sub-pic {
+    display: block;
+    width: 2.02rem;
+    height: 1.18rem;
+    margin: 1.73rem auto 0 auto;
+
+}
+
+.guide-page .arrow-icon {
+    position: absolute;
+    text-align: center;
+    color : #73D13D;
+    font-weight: bold;
+    font-size: .3rem;
+    left : 0;
+    bottom: .73rem;
+    right: 0;
+    line-height: .16rem;
+}
