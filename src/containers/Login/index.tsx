@@ -5,7 +5,7 @@ import useRequest from "../../utils/useRequest";
 
 function Login(){
 
-
+    //返回值类型
     type ResponseType={
         name:string;
     }
@@ -20,8 +20,9 @@ function Login(){
         navigate("/Register")
     }
     function handleLoginClick(){
-       request();
-       
+       request().then((data)=>{
+        data && console.log(data.name)
+       }).catch((e:any)=>{alert(e.message)});
     }
 
     useEffect(()=>{

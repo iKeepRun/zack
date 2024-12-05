@@ -12,25 +12,22 @@ function useRequest<T>(url: string, method: Method, payload: AxiosRequestConfig)
        controllerRef.current.abort();
     }
 
-    const request = async () => {
+    const request =() => {
         setData(null)
         setError("")
         setLoaded(false)
-        try {
-            const response = await axios.request<T>({
+        return axios.request<T>({
                 url,
                 method,
                 signal:controllerRef.current.signal,
                 data: payload,
-            })
-
-            setData(response.data);
-        } catch (e: any) {
-            setError(e.message)
-        } finally {
-            setLoaded(true);
-        }
-
+            }).then((response)=>{
+                setData(response.data);
+                return response.data
+            }).catch((e:any)=>{
+                setError(e.message)
+                throw new Error(e);
+            }).finally(()=>{ setLoaded(true);})
     }
     return {data,error,loaded,request,cancel};
 }
