@@ -6,6 +6,7 @@ import {BrowserRouter,Routes,Route} from  "react-router-dom";
 
 import Guide from "./containers/Guide";
 import Login from "./containers/Login";
+import Test from "./containers/Test";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Guide />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/test" element={<Test />}/>
       </Routes>
     </BrowserRouter>
   

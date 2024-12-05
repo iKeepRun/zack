@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 function Login(){
   return <div className="page login-page">
             <div className="tab">
