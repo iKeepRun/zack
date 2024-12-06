@@ -1,7 +1,7 @@
-import axios, { AxiosRequestConfig, Method } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { useRef, useState } from "react";
 
-function useRequest<T>(url: string, method: Method, payload: AxiosRequestConfig) {
+function useRequest<T>() {
     const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState("");
     const [loaded, setLoaded] = useState(false);
@@ -12,15 +12,16 @@ function useRequest<T>(url: string, method: Method, payload: AxiosRequestConfig)
        controllerRef.current.abort();
     }
 
-    const request =() => {
+    const request =(payload:AxiosRequestConfig) => {
         setData(null)
         setError("")
         setLoaded(false)
         return axios.request<T>({
-                url,
-                method,
+                url:payload.url,
+                method:payload.method,
                 signal:controllerRef.current.signal,
-                data: payload,
+                data: payload.data,
+                params:payload.params
             }).then((response)=>{
                 setData(response.data);
                 return response.data

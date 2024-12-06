@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {  useRef, useState } from "react";
 import useRequest from "../../utils/useRequest";
 import Modal,{ ModalRefType } from "../../components/Modal";
+import { url } from "inspector";
 
 function Login() {
     //返回值类型
@@ -14,7 +15,7 @@ function Login() {
     const [password, setPassword] = useState('')
     const navigate = useNavigate();
 
-    const { request } = useRequest<ResponseType>("a.json", "GET", {})
+    const { request } = useRequest<ResponseType>()
     
 
     function handleRegisterClick() {
@@ -29,7 +30,14 @@ function Login() {
             modalRef.current.showMessage("密码不能为空");
             return ;
         } 
-        request().then(
+        request({
+                url:"/login.json",
+                method:"POST",
+                data:{
+                    phoneNumber:phoneNumber,
+                    password:password,
+                },    
+        }).then(
             (data) => { data && console.log(data.name) }
         ).catch(
             (e: any) => {
