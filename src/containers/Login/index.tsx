@@ -1,46 +1,44 @@
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {  useRef, useState } from "react";
 import useRequest from "../../utils/useRequest";
-import Modal from "../../components/Modal";
+import Modal,{ ModalRefType } from "../../components/Modal";
 
 function Login() {
-
     //返回值类型
-    type ResponseType = {
+  type ResponseType = {
         name: string;
     }
-    const [message, setMessage] = useState('');
-    const [showModal, setShowModal] = useState(false);
+    const modalRef=useRef<ModalRefType>(null!);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('')
     const navigate = useNavigate();
 
     const { request } = useRequest<ResponseType>("a.json", "GET", {})
+    
 
     function handleRegisterClick() {
         navigate("/Register")
     }
     function handleLoginClick() {
+        if(!phoneNumber){
+            modalRef.current.showMessage("手机号不能为空");
+            return;
+         }
+        if(!password){
+            modalRef.current.showMessage("密码不能为空");
+            return ;
+        } 
         request().then(
             (data) => { data && console.log(data.name) }
         ).catch(
             (e: any) => {
-                setMessage(e?.message || '未知错误');
-                setShowModal(true);
-                // alert(e.message)
+                modalRef.current.showMessage(e.message)
             }
         )
     }
 
-    useEffect(() => {
-        if (showModal) {
-            const timer = setInterval(() => {
-                setShowModal(false);
-            }, 2000)
-            return () => { clearInterval(timer) }
-        }
-    }, [showModal])
+    
 
 
     return (
@@ -67,7 +65,8 @@ function Login() {
             </div>
             <div className="submit" onClick={handleLoginClick}>登录</div>
             <div className="notice">*登录即表示您赞同使用条款及隐私政策</div>
-            {showModal ? <Modal>{message}</Modal> : null}
+            {/* {showModal ? <Modal>{message}</Modal> : null} */}
+            <Modal ref={modalRef}/>
         </div>)
 }
 
