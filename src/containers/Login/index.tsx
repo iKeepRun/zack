@@ -1,14 +1,16 @@
 import "./style.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link } from "react-router-dom";
 import {  useRef, useState } from "react";
 import useRequest from "../../utils/useRequest";
 import Modal,{ ModalRefType } from "../../components/Modal";
-import { url } from "inspector";
 
 function Login() {
     //返回值类型
   type ResponseType = {
-        name: string;
+        success: string;
+        data:{
+            "token":string
+        }
     }
     const modalRef=useRef<ModalRefType>(null!);
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -38,7 +40,7 @@ function Login() {
                     password:password,
                 },    
         }).then(
-            (data) => { data && console.log(data.name) }
+            (data) => { data && console.log(data) }
         ).catch(
             (e: any) => {
                 modalRef.current.showMessage(e.message)
@@ -53,9 +55,10 @@ function Login() {
         <div className="page login-page">
             <div className="tab">
                 <div className="tab-item tab-item-left" >登录</div>
-                <div className="tab-item tab-item-right" onClick={handleRegisterClick}>注册</div>
+                <div className="tab-item tab-item-right" onClick={handleRegisterClick}><Link to={'/register'}>注册</Link></div>
             </div>
             <div className="form">
+                
                 <div className="form-item">
                     <div className="form-item-title">手机号</div>
                     <input className="form-item-content" placeholder="请输入手机号码"
@@ -73,7 +76,7 @@ function Login() {
             </div>
             <div className="submit" onClick={handleLoginClick}>登录</div>
             <div className="notice">*登录即表示您赞同使用条款及隐私政策</div>
-            {/* {showModal ? <Modal>{message}</Modal> : null} */}
+        
             <Modal ref={modalRef}/>
         </div>)
 }
