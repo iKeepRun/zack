@@ -10,7 +10,7 @@ function Guide(){
 
     const navigate=useNavigate();
     function handleIconClick(){
-       navigate("/login");
+       navigate("/account/login");
     }
     return (
   
