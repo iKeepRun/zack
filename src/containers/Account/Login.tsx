@@ -1,40 +1,50 @@
-import {  useRef, useState } from "react";
+import { useRef, useState } from "react";
 import useRequest from "../../utils/useRequest";
-import Modal,{ ModalRefType } from "../../components/Modal";
+import Modal, { ModalRefType } from "../../components/Modal";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     //返回值类型
-  type ResponseType = {
-        success: string;
-        data:{
-            "token":string
+    type ResponseType = {
+        success: boolean;
+        data: {
+            "token": string
         }
     }
-    const modalRef=useRef<ModalRefType>(null!);
+    const modalRef = useRef<ModalRefType>(null!);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('')
 
-    const { request } = useRequest<ResponseType>()
-    
+    const { request } = useRequest<ResponseType>();
+    const navigate = useNavigate();
 
     function handleLoginClick() {
-        if(!phoneNumber){
+        if (!phoneNumber) {
             modalRef.current.showMessage("手机号不能为空");
             return;
-         }
-        if(!password){
+        }
+        if (!password) {
             modalRef.current.showMessage("密码不能为空");
-            return ;
-        } 
+            return;
+        }
         request({
-                url:"/login.json",
-                method:"POST",
-                data:{
-                    phoneNumber:phoneNumber,
-                    password:password,
-                },    
+            url: "/login.json",
+            method: "POST",
+            data: {
+                phoneNumber: phoneNumber,
+                password: password,
+            },
         }).then(
-            (data) => { data && console.log(data) }
+            (data) => {
+                const { data: { token } } = data;
+                console.log("token ",token)
+                localStorage.setItem("token",token)
+                if(token){
+                    navigate("/home")
+                }else{
+                    navigate("/account/login")
+                }
+            }
         ).catch(
             (e: any) => {
                 modalRef.current.showMessage(e.message)
@@ -42,13 +52,13 @@ function Login() {
         )
     }
 
-    
+
 
 
     return (
         <>
-        
-            <div className="form">   
+
+            <div className="form">
                 <div className="form-item">
                     <div className="form-item-title">手机号</div>
                     <input className="form-item-content" placeholder="请输入手机号码"
@@ -66,8 +76,8 @@ function Login() {
             </div>
             <div className="submit" onClick={handleLoginClick}>登录</div>
             <div className="notice">*登录即表示您赞同使用条款及隐私政策</div>
-        
-            <Modal ref={modalRef}/>
+
+            <Modal ref={modalRef} />
         </>)
 }
 

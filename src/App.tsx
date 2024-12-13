@@ -8,6 +8,7 @@ import Guide from "./containers/Guide";
 import Login from "./containers/Account/Login";
 import Register from "./containers/Account/Register";
 import Account from "./containers/Account";
+import Home from "./containers/Home";
 
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           element:<Register />
         }
       ]
+    },{
+      path:"/home",
+      element: <Home />
     }
   ])
   return (

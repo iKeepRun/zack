@@ -10,7 +10,12 @@ function Guide(){
 
     const navigate=useNavigate();
     function handleIconClick(){
-       navigate("/account/login");
+      const token=localStorage.getItem("token")
+      if(token){
+        navigate("/home");
+      }else{
+        navigate("/account/login");
+      }
     }
     return (
   

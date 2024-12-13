@@ -6,6 +6,8 @@ function useRequest<T>() {
     const [error, setError] = useState("");
     const [loaded, setLoaded] = useState(false);
     
+    const token =localStorage.getItem("token")
+    const headers=token?{"token":token}:{}
     //取消请求的方法（ref作用：包裹了一个 即使值改变了也不会重新渲染页面）
     const controllerRef=useRef(new AbortController())
     const cancel=()=>{
@@ -21,7 +23,8 @@ function useRequest<T>() {
                 method:payload.method,
                 signal:controllerRef.current.signal,
                 data: payload.data,
-                params:payload.params
+                params:payload.params,
+                headers:headers
             }).then((response)=>{
                 setData(response.data);
                 return response.data
