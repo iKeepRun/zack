@@ -1,4 +1,5 @@
 .home-page {
+    background: #F5F9FA;
   .banner {
     width: 3.75rem;
     height: 2.3rem;
@@ -45,7 +46,7 @@
         .pagination {
             position: absolute;
             left: 50%;
-            bottom: .27rem;
+            bottom: .6rem;
             z-index: 999;
             transform: translateX(-50%);
             font-size: .12rem;
@@ -59,5 +60,31 @@
     }
   }
 
-
+  .category {
+    position: relative;
+    font-size: .12rem;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: .2rem;
+    border-radius: .2rem .2rem 0 0;
+    margin-top: -.2rem;
+    background: #FFF;
+    &-item {
+        flex: 0 0 25%;
+        text-align: center;
+        &-img {
+            width: .42rem;
+            height: .36rem;
+            margin-top: .16rem;
+            margin-bottom: .13rem;
+            // padding-bottom: .13rem;
+       
+        }
+        &-title {
+            color:#242424;
+            line-height: .18rem;
+            // text-align: center;
+        }
+    }
+  }
 }

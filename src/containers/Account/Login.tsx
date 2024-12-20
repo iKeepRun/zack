@@ -1,30 +1,27 @@
-import { useRef, useState } from "react";
-import useRequest from "../../utils/useRequest";
-import Modal, { ModalRefType } from "../../components/Modal";
-import { useNavigate } from "react-router-dom";
 
+import type { LoginResponseType } from "./types";
+import { useState } from "react";
+import useRequest from "../../hooks/useRequest";
+import { useNavigate } from "react-router-dom";
+import { message } from "../../utils/message";
 function Login() {
-    //返回值类型
-    type ResponseType = {
-        success: boolean;
-        data: {
-            "token": string
-        }
-    }
-    const modalRef = useRef<ModalRefType>(null!);
+   
+  
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('')
 
-    const { request } = useRequest<ResponseType>();
+    const { request } = useRequest<LoginResponseType>({
+       manual:false
+    });
     const navigate = useNavigate();
 
     function handleLoginClick() {
         if (!phoneNumber) {
-            modalRef.current.showMessage("手机号不能为空");
+            message("手机号不能为空");
             return;
         }
         if (!password) {
-            modalRef.current.showMessage("密码不能为空");
+            message("密码不能为空");
             return;
         }
         request({
@@ -47,7 +44,7 @@ function Login() {
             }
         ).catch(
             (e: any) => {
-                modalRef.current.showMessage(e.message)
+                message(e.message)
             }
         )
     }
@@ -57,7 +54,6 @@ function Login() {
 
     return (
         <>
-
             <div className="form">
                 <div className="form-item">
                     <div className="form-item-title">手机号</div>
@@ -77,7 +73,6 @@ function Login() {
             <div className="submit" onClick={handleLoginClick}>登录</div>
             <div className="notice">*登录即表示您赞同使用条款及隐私政策</div>
 
-            <Modal ref={modalRef} />
         </>)
 }
 

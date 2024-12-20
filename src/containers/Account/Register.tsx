@@ -1,37 +1,33 @@
-import {  useRef, useState } from "react";
-import useRequest from "../../utils/useRequest";
-import Modal,{ ModalRefType } from "../../components/Modal";
+import type { RegisterResponseType } from "./types";
+import { useState } from "react";
+import useRequest from "../../hooks/useRequest";
+import { message } from "../../utils/message";
 
 function Register() {
-    //返回值类型
-  type ResponseType = {
-        success: boolean
-        data:string
-    }
-    
-    const modalRef=useRef<ModalRefType>(null!);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [checkPassword, setCheckPassword] = useState('');
    
-    const { request } = useRequest<ResponseType>()
+    const { request } = useRequest<RegisterResponseType>({manual:true
+        
+})
     
     function handleLoginClick() {
         if(!userName){
-            modalRef.current.showMessage("用户名不能为空");
+            message("用户名不能为空");
             return ;
         } 
         if(!phoneNumber){
-            modalRef.current.showMessage("手机号不能为空");
+            message("手机号不能为空");
             return;
          }
         if(!password){
-            modalRef.current.showMessage("密码不能为空");
+            message("密码不能为空");
             return ;
         } 
         if(!checkPassword){
-            modalRef.current.showMessage("确认密码不能为空");
+            message("确认密码不能为空");
             return ;
         } 
         request({
@@ -46,7 +42,7 @@ function Register() {
             (data) => { data && console.log(data) }
         ).catch(
             (e: any) => {
-                modalRef.current.showMessage(e.message)
+                message(e.message)
             }
         )
     }
@@ -87,8 +83,6 @@ function Register() {
                 </div>
             </div>
             <div className="submit" onClick={handleLoginClick}>注册</div>
-          
-            <Modal ref={modalRef}/>
         </>)
 }
 

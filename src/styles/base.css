@@ -4,16 +4,16 @@
 }
 
 /* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
 @font-face {
   font-family: 'iconfont';  /* Project id 4769162 */
-  src: url('//at.alicdn.com/t/c/font_4769162_4quy2104srv.woff2?t=1734053858316') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4769162_4quy2104srv.woff?t=1734053858316') format('woff'),
-       url('//at.alicdn.com/t/c/font_4769162_4quy2104srv.ttf?t=1734053858316') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_4769162_wnd8l68ivbq.woff2?t=1734681622201') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4769162_wnd8l68ivbq.woff?t=1734681622201') format('woff'),
+       url('//at.alicdn.com/t/c/font_4769162_wnd8l68ivbq.ttf?t=1734681622201') format('truetype');
 }
   
   .iconfont {
     font-family: "iconfont" !important;
-    font-size: 16px;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
