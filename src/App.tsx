@@ -2,39 +2,46 @@ import "normalize.css";
 import "./styles/border.css";
 import "./styles/base.css";
 
-import {createHashRouter, RouterProvider} from  "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
 import Guide from "./containers/Guide";
 import Login from "./containers/Account/Login";
 import Register from "./containers/Account/Register";
 import Account from "./containers/Account";
 import Home from "./containers/Home";
-
+import Nearby from "./containers/Nearby";
+import Search from "./containers/Search";
 
 function App() {
-  const routers=createHashRouter([
+  const routers = createHashRouter([
     {
-      path:"/",
-      element:<Guide />
-    },{
-      path:"/account",
-      element: <Account/>,
-      children:[
+      path: "/",
+      element: <Guide />
+    }, {
+      path: "/account",
+      element: <Account />,
+      children: [
         {
-          path:"/account/login",
-          element:<Login />
-        },{
-          path:"/account/register",
-          element:<Register />
+          path: "/account/login",
+          element: <Login />
+        }, {
+          path: "/account/register",
+          element: <Register />
         }
       ]
-    },{
-      path:"/home",
+    }, {
+      path: "/home",
       element: <Home />
+    }, {
+      path: "/nearby",
+      element: <Nearby />
+    }, {
+      path: "/search",
+      element: <Search />
     }
   ])
   return (
-         <RouterProvider router={routers} />
+    <RouterProvider router={routers} />
   );
 }
 

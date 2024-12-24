@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { message } from "../utils/message";
 
 
-const defaultRequestConfig={
-    url:'/',method:'GET',data:{},params:{}
+const defaultRequestConfig = {
+    url: '/', method: 'GET', data: {}, params: {}
 }
 
-function useRequest<T>(options: AxiosRequestConfig&{manual?:boolean}=defaultRequestConfig) {
+function useRequest<T>(options: AxiosRequestConfig & { manual?: boolean } = defaultRequestConfig) {
     const navigate = useNavigate();
     const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState("");
@@ -24,7 +24,7 @@ function useRequest<T>(options: AxiosRequestConfig&{manual?:boolean}=defaultRequ
         setData(null)
         setError("")
         setLoaded(false)
-
+        console.log("请求路径",requestOptions.url)
         const loginToken = localStorage.getItem("token")
         const headers = loginToken ? { token: loginToken } : {}
 
@@ -36,6 +36,7 @@ function useRequest<T>(options: AxiosRequestConfig&{manual?:boolean}=defaultRequ
             params: requestOptions.params,
             headers: headers
         }).then((response) => {
+            console.log("接口返回数据", response)
             setData(response.data);
             return response.data
         }).catch((e: any) => {
@@ -49,13 +50,13 @@ function useRequest<T>(options: AxiosRequestConfig&{manual?:boolean}=defaultRequ
     }, [navigate])
 
     useEffect(() => {
-        if(!options.manual){
-            request(options).catch((e)=>{
+        if (!options.manual) {
+            request(options).catch((e) => {
                 message(e.message)
-             })
+            })
         }
-     
-    }, [options,request])
+
+    }, [options, request])
 
     return { data, error, loaded, request, cancel };
 }

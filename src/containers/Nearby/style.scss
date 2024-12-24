@@ -1,0 +1,68 @@
+.nearby-page {
+    .title {
+        font-size: .18rem;
+        text-align: center;
+        margin-top: .1rem;
+        font-weight: 530;
+
+        .title-icon {
+            float: left;
+            margin-left: .05rem;
+
+        }
+    }
+    .search {
+        display: flex;
+        font-size: .14rem;
+        line-height: .24rem;
+        margin-top: .1rem;
+        &-icon {
+            margin: 0 .1rem;
+        }
+        &-input {
+            background: #FFF;
+            border: 0;
+            flex: 1;
+            margin-right: .1rem;
+        }
+    }
+    .subtitle {
+        font-size: .14rem;
+        margin: .1rem 0 .1rem .1rem;
+    }
+
+    .list {
+        list-style: none;  
+        &-item {
+            position: relative;
+            margin-left: .15rem;
+            // height: 1rem;
+            padding: 0 .1rem;
+            &-title {
+
+                font-size: .16rem ;
+                font-weight: bolder;
+                margin-bottom: .1rem;
+
+            }
+            &-phone {
+                font-size: .14rem;
+                margin-bottom: .05rem;
+            }
+            &-address {
+                font-size: .14rem;
+                margin-bottom: .1rem;
+            }
+            &-position {
+                display: flex;
+                position: absolute;
+                font-size: .14rem;
+                top: .3rem;
+                right: .2rem;
+                &-icon {
+                    margin-right: .05rem;
+                }
+            }
+        }
+    }
+}

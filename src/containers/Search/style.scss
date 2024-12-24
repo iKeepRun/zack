@@ -1,0 +1,65 @@
+.search-page {
+    .title {
+        display: flex;
+        font-size: .16rem;
+        line-height: .32rem;
+        margin-top: .1rem;
+        margin-bottom: .1rem; 
+        &-back {
+            text-decoration: none;
+        }
+        &-icon {
+            margin: 0 .1rem;
+        }
+        &-input {
+            flex: 1;
+            margin-right: .3rem;
+            padding-right: .2rem;
+            background-color: #F5F9FA;
+            outline: none;
+            border: none;
+        }
+    }
+
+    .sub {
+        font-size: .16rem;
+        &-title{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: .1rem;
+            margin-bottom: .1rem;
+            position: relative;
+
+            &-icon {
+                font-size: .18rem;
+                margin-right: .1rem;
+                color: grey;
+                visibility: hidden;
+                opacity: 0; /* 初始时设置为透明 */
+                transition: opacity 0.3s ease,visibility 0s 0.3s; /* 透明度过渡效果 */ 
+            }
+        }
+        &-list {
+            display: flex;
+            list-style-type: none;
+            margin-left: .15rem;
+            flex-wrap: wrap;
+            &-item {
+                padding: .07rem .1rem;
+                margin-right: .14rem;
+                margin-bottom: .14rem;
+                white-space: nowrap;
+                background: #F5F9FA;
+                line-height: .18rem;
+                border-radius: .16rem;
+            }
+        }
+    }
+
+    .sub-title:hover .sub-title-icon{
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s ease, visibility 0s;
+    }
+}
