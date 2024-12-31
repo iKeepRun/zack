@@ -1,5 +1,5 @@
 import { ResponseType } from "./type";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import "./style.scss"
 import useRequest from "../../hooks/useRequest";
@@ -10,26 +10,37 @@ const defaultRequestData = {
 }
 
 function Search() {
+    const params = useParams();
+
     var localhistory = localStorage.getItem("historyList");
     var localhistoryList: string[] = localhistory ? JSON.parse(localhistory) : [];
 
     const { data } = useRequest<ResponseType>(defaultRequestData);
     const hotList = data?.data || [];
 
+    const navigate = useNavigate();
+
     const [keyword, setKeyword] = useState("");
     const [historyList, setHistoryList] = useState(localhistoryList);
 
-    function handleSearchInput(k: any) {
-        if (k.key === "Enter") {
-            const newHistoryList = [keyword, ...historyList]
-            setHistoryList(newHistoryList)
-            localStorage.setItem("historyList", JSON.stringify(newHistoryList))
+    function handleSearchInput(k: string) {
+        if (k === "Enter" && keyword) {
+            if (!historyList.find(item => item === keyword)) {
+                const newHistoryList = [keyword, ...historyList]
+                setHistoryList(newHistoryList)
+                localStorage.setItem("historyList", JSON.stringify(newHistoryList))
+                navigate(`/searchlist/${params.shopId}/${keyword}`)
+            }
         }
     }
 
     function handleClearHistory() {
         setHistoryList([])
         localStorage.removeItem("historyList")
+    }
+
+    function handleItemSearchClick(item: string) {
+        navigate(`/searchlist/${params.shopId}/${item}`)
     }
 
     return (
@@ -42,18 +53,22 @@ function Search() {
                     placeholder="&#xe60e;请输入商品名字"
                     value={keyword}
                     onChange={(e) => { setKeyword(e.target.value) }}
-                    onKeyDown={(k) => { handleSearchInput(k) }}
+                    onKeyDown={(k) => { handleSearchInput(k.key) }}
                 />
             </div>
             <div className="sub">
-                <div className="sub-title">
-                    历史搜索
-                    <span className="iconfont sub-title-icon" onClick={handleClearHistory}>&#xe610;</span>
-                </div>
+                {localhistory ?
+                    <div className="sub-title">
+                        历史搜索
+                        <span className="iconfont sub-title-icon" onClick={handleClearHistory}>&#xe610;</span>
+                    </div>
+                    : <></>
+                }
+
                 <ul className="sub-list">
                     {historyList.map((item, index) => {
                         return (
-                            <li className="sub-list-item" key={index}>{item}</li>
+                            <li className="sub-list-item" key={index} onClick={() => { handleItemSearchClick(item) }}>{item}</li>
                         )
                     })}
                 </ul>
@@ -65,7 +80,7 @@ function Search() {
                 <ul className="sub-list">
                     {hotList.map((item) => {
                         return (
-                            <li className="sub-list-item" key={item.id}>{item.name}</li>
+                            <li className="sub-list-item" key={item.id} onClick={() => { handleItemSearchClick(item.name) }}>{item.name}</li>
                         )
                     })}
                 </ul>

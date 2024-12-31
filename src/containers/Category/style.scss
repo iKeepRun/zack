@@ -1,0 +1,150 @@
+.category-page {
+    position: relative;
+
+    .title {
+        display: flex;
+        font-size: .16rem;
+        line-height: .32rem;
+        margin: .1rem;
+
+
+        .iconfont {
+            margin: 0 .1rem;
+        }
+
+        &-input {
+            flex: 1;
+            margin-right: .3rem;
+            padding: 0 .2rem;
+            background-color: #F5F9FA;
+            outline: none;
+            border: none;
+            border-radius: .15rem;
+        }
+    }
+
+    .category {
+        position: absolute;
+        bottom: .52rem;
+        top: .52rem;
+        left: 0;
+        width: .96rem;
+        background: #F5F9FA;
+        overflow-y: scroll;
+        &-item {
+            text-align: center;
+            font-size: .14rem;
+
+            // padding: .1rem;
+            line-height: .48rem;
+            color: #242424;
+            // margin-bottom: .1rem;
+
+
+            &-active {
+                background: #FFF;
+            }
+        }
+        
+    }
+
+    .tag {
+        position: absolute;
+        left: .96rem;
+        top: .52rem;
+        right: 0;
+      
+        display: flex;
+        height: .48rem;
+        font-size: .12rem;
+        white-space: nowrap;
+        align-items: center;
+        overflow-x: scroll;
+
+        &-item {
+            margin: 0 .1rem;
+            line-height: .26rem;
+            border-radius: .05rem;
+            background: #F5F9FA;
+            padding: .05rem .1rem;
+            &-active {
+                background: #52c41a;
+            }
+        }
+
+    }
+
+    .product {
+        position: absolute;
+        left: .96rem;
+        top: 1rem;
+        right: 0;
+        bottom: .52rem;
+        font-size: .14rem;
+        overflow-y: scroll;
+
+        &-category {
+            padding: .1rem;
+        }
+        &-item {
+            display: flex;
+            position: relative;
+            &-img {
+                width: .8rem;
+                height: .8rem;
+            }
+            &-content {
+                flex: 1;
+                // margin: .08rem;
+            }
+            &-title {
+                margin-top: .07rem;
+            }
+            &-sales {
+                margin: .07rem 0;
+                font-size: .12rem;
+                color: #b1b1b1;
+            }
+
+            &-price {
+                font-size: .18rem;
+                color: red;
+                .yen {
+                    font-size: .12rem;
+                }
+            }
+
+            &-btn {
+                position: absolute;
+                right: .2rem;
+                top:.5rem;
+                background: #73D13D; 
+                color: #FFF;
+                padding: .02rem .09rem;
+            }
+        }
+        
+    }
+
+    .docker {
+        width: 100%;
+        background:#FFF;
+        display: flex;
+        text-align: center;
+        font-size: .14rem;
+        position: fixed;
+        bottom: 0;
+       
+        &-item {
+            flex: 0 0 25%;
+            margin: .01rem 0;
+        }
+        &-item-active {
+            color: #73D13D;
+        }
+        .iconfont{
+           font-size: .3rem;
+        }
+    }
+
+}

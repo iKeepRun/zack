@@ -24,7 +24,7 @@ function useRequest<T>(options: AxiosRequestConfig & { manual?: boolean } = defa
         setData(null)
         setError("")
         setLoaded(false)
-        console.log("请求路径",requestOptions.url)
+        // console.log("请求路径",requestOptions.url)
         const loginToken = localStorage.getItem("token")
         const headers = loginToken ? { token: loginToken } : {}
 
@@ -36,7 +36,7 @@ function useRequest<T>(options: AxiosRequestConfig & { manual?: boolean } = defa
             params: requestOptions.params,
             headers: headers
         }).then((response) => {
-            console.log("接口返回数据", response)
+            // console.log("接口返回数据", response)
             setData(response.data);
             return response.data
         }).catch((e: any) => {
@@ -51,6 +51,7 @@ function useRequest<T>(options: AxiosRequestConfig & { manual?: boolean } = defa
 
     useEffect(() => {
         if (!options.manual) {
+            // console.log("进入useRequest的 effect !options.mamual=true")
             request(options).catch((e) => {
                 message(e.message)
             })

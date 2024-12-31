@@ -24,7 +24,7 @@ function Banner(props: BannerPropsType) {
                 <span className="iconfont" >&#xe83d;</span>
                 {location?.address || ''}
             </div>
-            <div className="search" onClick={()=>{navigate("/search")}}>
+            <div className="search" onClick={()=>{navigate(`/search/${location?.id}`)}}>
                 <span className="iconfont" >&#xe73d;</span>
                 请输入你需要搜索的内容
             </div>

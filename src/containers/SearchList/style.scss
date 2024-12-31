@@ -1,0 +1,104 @@
+.searchlist-page {
+    // padding: 0 .1rem;
+    // overflow-x: hidden;
+    // box-sizing: border-box;
+    overflow-y: scroll;
+    background: #F5F9FA;
+    .title {
+        position: relative;
+        display: flex;
+        font-size: .16rem;
+        line-height: .32rem;
+        padding: .2rem 0;
+        background: #FFF;
+        &-back {
+            text-decoration: none;
+        }
+        &-icon {
+            margin: 0 .1rem;
+        }
+        &-input {
+            flex: 1;
+            margin-right: .3rem;
+            padding: .05rem .2rem .05rem .05rem;
+            background-color: #F5F9FA;
+            outline: none;
+            border: none;
+            border-radius: .1rem;
+        }
+
+        .search-clear {
+            position: absolute;
+            font-size: .18rem;
+            right: .4rem;
+            top:.2rem;
+        }
+    }
+    .sub {
+        display: flex;
+        font-size: .16rem;
+        align-items: center;
+        justify-content: space-around;
+        background: #FFF;   
+        color:#B1B1B1;
+        padding-bottom: .1rem;
+        &-item {
+            flex: 1;
+            text-align: center;
+        }
+        .actived {
+            color: #242424;
+        }
+    }
+    
+    .product-list {
+       font-size: .16rem;
+       background: #F5F9FA;
+       margin: 0 .1rem;
+        .product-item {
+            position: relative;
+            display: flex;
+            padding: .1rem;
+            margin: .1rem 0;
+            background: #FFF;
+            &-img {
+                width: 1.2rem;
+                margin-right: .1rem;
+            }
+            &-detail {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .product-item-desc {
+                        margin-top: .1rem;
+                        text-overflow: -o-ellipsis-lastline;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                }
+                .product-item-price {
+                    color :red;
+                      .yen {
+                        font-size: .12rem;
+                        color: red;
+                      }
+                      .sales {
+                        position: absolute;
+                        color: grey;
+                        bottom: .1rem;      
+                        right: .3rem;
+                      }
+                }
+            }
+        }
+    }
+    .bottom {
+        line-height: 1rem;
+        font-size: .12rem;
+        color: #B3C1C4;
+        text-align: center;
+    }
+}

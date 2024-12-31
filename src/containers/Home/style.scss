@@ -99,7 +99,7 @@
         }
     }
 
-    .card {
+    .cart {
         margin-top: .1rem;
         background: #FFF;
         font-size: .12rem;
@@ -186,26 +186,7 @@
             }
         }
     }
-    .docker {
-        width: 100%;
-        background:#FFF;
-        display: flex;
-        text-align: center;
-        font-size: .14rem;
-        position: fixed;
-        bottom: 0;
-       
-        &-item {
-            flex: 0 0 25%;
-            margin: .01rem 0;
-        }
-        &-item-active {
-            color: #73D13D;
-        }
-        .iconfont{
-           font-size: .3rem;
-        }
-    }
+   
     .bottom {
         line-height: 1rem;
         font-size: .12rem;
