@@ -1,4 +1,4 @@
-.popup {
+.popup-mask {
     position: fixed;
     z-index: 999;
     top:0;
@@ -8,4 +8,16 @@
     background: #000;
     opacity: .5;
 
+}
+
+
+
+.popup-cart {
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-radius: .1rem .1rem 0 0;
 }

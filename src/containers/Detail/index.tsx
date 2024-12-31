@@ -68,9 +68,28 @@ function Detail() {
                     <div className="card-right" onClick={()=>setShow(true)}>加入购物车</div>
                 </div>
             </div>
-            {show?<Popup>
-                 <div className="popup-child"> children</div>
-            </Popup>:null}
+           <Popup show={show} clickCallback={()=>{setShow(false)}} >
+                 <div className="cart">
+                    <div className="cart-content">
+                        <img className="cart-content-img"src={res.imgUrl} alt=""></img>
+                        <div className="cart-content-info">
+                            <div className="cart-content-title">{res.title}</div>
+                            <div className="cart-content-price"><span className="yen">&yen;</span>{res.price}</div>
+                        </div>
+                       
+                    </div>
+                    <div className="cart-count">
+                        购买数量
+                        <div className="cart-count-btn">
+                            <span className="cart-count-btn-item">+</span>
+                            <span className="cart-count-btn-count">18</span>
+                            <span className="cart-count-btn-item">-</span>
+                        </div>
+                        
+                    </div>
+                    <div className="cart-btn">加入购物车</div>
+                 </div>
+            </Popup>
         </div>):null
 }
 
