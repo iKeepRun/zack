@@ -12,3 +12,17 @@ export type ResponseType={
         detail:string;
     }
 }
+
+
+export type CartCountResponseType ={
+    success:boolean,
+    data:{
+        count:number
+    }
+}
+
+
+export type UpdateCartResponseType ={
+    success:boolean,
+    data:boolean
+}

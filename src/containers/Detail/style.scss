@@ -6,16 +6,16 @@
     overflow-y: scroll;
 
     .title {
-        position :relative;
+        position: relative;
         color: #242424;
         text-align: center;
         justify-content: left;
         padding: .1rem 0;
-        
+
         .back-icon {
             position: absolute;
-            left :.1rem;
-            
+            left: .1rem;
+
         }
     }
 
@@ -76,7 +76,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: .1rem;
-          
+
         }
 
         &-spec {
@@ -132,15 +132,33 @@
             background: #FFF;
             height: .64rem;
             border: .01rem solid #f5f9fa;
+
             &-left {
                 width: .4rem;
-                margin-left: .2rem  ;
+                margin-left: .2rem;
                 margin-right: .7rem;
-                .card-icon{
+
+                .card-icon {
+                    position: relative;
                     font-size: .24rem;
                 }
+
                 .card-name {
                     font-size: .1rem;
+                }
+
+                &-count {
+                    position: absolute;
+                    top: -.08rem;
+                    left: .3rem;
+                    width: .2rem;
+                    height: .2rem;
+                    background: #73D13D;
+                    font-size: .14rem;
+                    line-height: .2rem;
+                    text-align: center;
+                    border-radius: 50%;
+                    color: #fff;
                 }
             }
 
@@ -161,58 +179,61 @@
 
 
     .cart {
-      
-       &-content {
-           display: flex;
-           border: .01rem solid #F4F4F4;
-           padding: .2rem .2rem .34rem .2rem;
-           &-img {
-            
-            width: .7rem; 
-            height: .7rem;
-            margin-right: .48rem;
-           }
+        &-content {
+            display: flex;
+            border: .01rem solid #F4F4F4;
+            padding: .2rem .2rem .34rem .2rem;
 
-           &-info {
-            font-size: .12rem;
-           }
+            &-img {
 
-           &-title {
-            margin-right: .45rem;
-            line-height: .18rem;
-
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-            word-break: break-all;
-           }
-
-           &-price {
-            margin-top: .1rem;
-            color: #F81C00;
-            font-size: .22rem;
-            .yen {
-              font-size: .14rem;
-              margin-right: .02rem;
-              font-weight: normal;
+                width: .7rem;
+                height: .7rem;
+                margin-right: .48rem;
             }
-           }
 
-       }
+            &-info {
+                font-size: .12rem;
+            }
 
-       
+            &-title {
+                margin-right: .45rem;
+                line-height: .18rem;
 
-       &-count{
-              padding: .35rem .16rem;
-              font-size: .14rem;
-              line-height: .28rem;
-              color: #242424;
-              height: .28rem;
-              &-btn{
-               float: right;
-                &-item &-count{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                word-break: break-all;
+            }
+
+            &-price {
+                margin-top: .1rem;
+                color: #F81C00;
+                font-size: .22rem;
+
+                .yen {
+                    font-size: .14rem;
+                    margin-right: .02rem;
+                    font-weight: normal;
+                }
+            }
+
+        }
+
+
+
+        &-count {
+            padding: .35rem .16rem;
+            font-size: .14rem;
+            line-height: .28rem;
+            color: #242424;
+            height: .28rem;
+
+            &-btn {
+                float: right;
+
+                &-item &-count {
                     display: inline-block;
                     background: #F4F4F4;
                     font-size: .18rem;
@@ -224,23 +245,24 @@
                     width: .18rem;
                 }
 
-                &-count{
+                &-count {
                     margin: 0 .1rem;
                     padding: 0 .08rem;
                 }
-              }
-            
-             
-       }
-       &-btn {
-        margin: .1rem .16rem;
-        border-radius: .22rem;
-        background: #73D13D;
-        color: #FFF;
-        line-height: .44rem;
-        font-size: .16rem;
-        text-align: center;
-       }
+            }
+
+
+        }
+
+        &-btn {
+            margin: .1rem .16rem;
+            border-radius: .22rem;
+            background: #73D13D;
+            color: #FFF;
+            line-height: .44rem;
+            font-size: .16rem;
+            text-align: center;
+        }
 
     }
 }
