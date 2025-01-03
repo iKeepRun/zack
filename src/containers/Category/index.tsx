@@ -110,7 +110,7 @@ function Category() {
             method: "POST",
             data: {
                 id: productId,
-                count: count
+                count: productCartInfo.count
             }
         }).then((resp) => {
             console.log(resp.data)
@@ -122,15 +122,24 @@ function Category() {
         }).catch((e) => { message(e.message) })
     }
 
-
     function changeCount(count: number) {
         if (count > 0) {
-            setCount(count);
+            setProductCartInfo((prevData) => ({
+                ...prevData, count:count
+            }))
+          
         } else {
-            setCount(0);
+            setProductCartInfo((prevData) => ({
+                ...prevData, count: 0 
+            }))
         }
     }
-   分类列表页购物车逻辑实现
+
+
+    function clickCallBack() {
+        setShow(false)
+        setCount(0)
+    }
     return (<div className="page category-page">
         <div className="title">
             <div className="iconfont">&#xe60e;</div>
@@ -182,27 +191,27 @@ function Category() {
 
         </div>
         <Docker name="category" />
-        <Popup show={show} clickCallback={() => { setShow(false); }}>
+        <Popup show={show} clickCallback={() => clickCallBack()}>
             <div className="cart">
                 <div className="cart-content">
-                    <img className="cart-content-img" src="" alt=""></img>
+                    <img className="cart-content-img" src={productCartInfo.imgUrl} alt=""></img>
                     <div className="cart-content-info">
-                        <div className="cart-content-title">"title"</div>
-                        <div className="cart-content-price"><span className="yen">&yen;</span>"price"</div>
+                        <div className="cart-content-title">{productCartInfo.title}</div>
+                        <div className="cart-content-price"><span className="yen">&yen;</span>{productCartInfo.price}</div>
                     </div>
 
                 </div>
                 <div className="cart-count">
                     购买数量
                     <div className="cart-count-btn">
-                        <span className="cart-count-btn-item" onClick={() => changeCount(count + 1)}>+</span>
-                        <span className="cart-count-btn-count">{count}</span>
-                        <span className="cart-count-btn-item" onClick={() => changeCount(count - 1)}>-</span>
+                        <span className="cart-count-btn-item" onClick={() => changeCount(productCartInfo.count + 1)}>+</span>
+                        <span className="cart-count-btn-count">{productCartInfo.count}</span>
+                        <span className="cart-count-btn-item" onClick={() => changeCount(productCartInfo.count - 1)}>-</span>
                     </div>
                 </div>
                 <div className="cart-btns">
-                    <div className="cart-btn-left" onClick={() => updateCart("")}>加入购物车</div>
-                    <div className="cart-btn-right">立即购买</div>
+                    <div className="cart-btn-left" onClick={() => updateCart(productCartInfo.id)}>加入购物车</div>
+                    <div className="cart-btn-right" onClick={()=>updateCart(productCartInfo.id)}>立即购买</div>
                 </div>
             </div>
         </Popup>

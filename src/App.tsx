@@ -14,6 +14,7 @@ import Search from "./containers/Search";
 import SearchList from "./containers/SearchList";
 import Detail from "./containers/Detail";
 import Category from "./containers/Category";
+import Cart from "./containers/Cart";
 
 function App() {
   const routers = createHashRouter([
@@ -50,6 +51,9 @@ function App() {
     },{
       path:"/category",
       element:<Category/>
+    },{
+      path:"/cart",
+      element:<Cart />
     }
   ])
   return (

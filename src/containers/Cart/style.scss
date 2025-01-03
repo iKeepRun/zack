@@ -1,0 +1,102 @@
+.cart-page {
+    background: #F5F9FA;
+    font-size: .14rem;
+    overflow-y: scroll;
+    padding-bottom: 1.12rem;
+    .cart-title {
+        text-align: center;
+        line-height: .28rem;
+        color: #242424;
+        background: #fff;
+
+        font-size: .16rem;
+    }
+
+    .cart-detail {
+        background: #FFF;
+        padding: .1rem;
+        margin-top: .1rem;
+
+        &-title {
+            display: flex;
+            padding-bottom: .1rem;
+
+            &-radio {
+                transform: scale(1.5);
+                margin-right: .1rem;
+            }
+
+            &-img {
+                font-size: .16rem;
+                margin-right: .08rem;
+            }
+
+        }
+
+        &-content {
+            .cart-detail-item {
+                display: flex;
+                justify-content: center;
+                margin-bottom: .1rem;
+
+                &-radio {
+                    transform: scale(1.5);
+                    margin-right: .1rem;
+                }
+
+                &-img {
+                    width: .7rem;
+                    height: .7rem;
+                    margin-right: .1rem;
+                }
+
+                &-right {
+                    position: relative;
+
+                    .item-title {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        word-break: break-all;
+                    }
+
+                    .item-specification {
+                        color: gray;
+                        margin: .1rem 0;
+
+                    }
+
+                    .item-price {
+                        color: red;
+                        font-size: .2rem;
+                        line-height: .24rem;
+                        // margin: 0 .06rem;
+                    }
+
+                    .yen {
+                        // margin-right: .05rem;
+                        font-size: .12rem;
+                    }
+
+                    .item-input {
+                        position: absolute;
+                        width: .4rem;
+                        height: .14rem;
+                        text-align: center;
+                        right: .3rem;
+                        top: .75rem;
+                        background: #F5F9FA;
+                        border: .01rem solid #DFDFDF;
+                        outline: none;
+                    }
+                }
+            }
+
+
+        }
+    }
+
+
+}
